@@ -1,0 +1,455 @@
+\documentclass[11pt,aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+% Palette : bleu #0000FF, encre sombre, fond blanc cassé
+\definecolor{bleu}{HTML}{0000FF}
+\definecolor{encre}{HTML}{1A1A2E}
+\definecolor{gris}{HTML}{5C5C6E}
+\definecolor{papier}{HTML}{F7F6F2}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{background canvas}{bg=papier}
+\setbeamercolor{normal text}{fg=encre}
+\setbeamercolor{frametitle}{fg=bleu}
+\setbeamercolor{title}{fg=bleu}
+\setbeamercolor{subtitle}{fg=encre}
+\setbeamercolor{structure}{fg=bleu}
+\setbeamercolor{alerted text}{fg=bleu}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamerfont{title}{series=\bfseries,size=\huge}
+\setbeamertemplate{itemize items}{\rule[0.25ex]{0.6ex}{0.6ex}}
+\setbeamertemplate{itemize subitem}{\textcolor{gris}{\rule[0.3ex]{0.8ex}{0.15ex}}}
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{frametitle}{%
+  \vspace{0.6em}\insertframetitle\par
+  \vspace{0.15em}{\color{bleu}\rule{2.2cm}{1.2pt}}}
+\setbeamertemplate{footline}{%
+  \hspace{1em}\textcolor{gris}{\tiny Littérature sur les portails open data}%
+  \hfill\textcolor{gris}{\tiny\insertframenumber/\inserttotalframenumber}\hspace{1em}\vspace{0.6em}}
+
+\newcommand{\refc}[1]{\textcolor{gris}{\footnotesize #1}}
+
+\title{Les portails de données ouvertes}
+\subtitle{Ce que dit la littérature, des origines aux portails nationaux africains}
+\date{Octobre 2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \vfill
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+  \vspace{0.6em}
+  {\large\insertsubtitle\par}
+  \vspace{1.2em}
+  {\color{bleu}\rule{4cm}{1.5pt}}\par
+  \vspace{0.8em}
+  {\small\textcolor{gris}{Revue de littérature pour préparer la construction de portails nationaux}}
+  \vfill
+\end{frame}
+
+\begin{frame}{Plan}
+  \begin{enumerate}
+    \item Origines et définitions
+    \item Les cadres théoriques : gouvernement ouvert, valeur, écosystèmes
+    \item Le portail comme objet de recherche
+    \item Qualité, usage et impact
+    \item Critiques et limites
+    \item Le contexte africain et les pays en développement
+    \item Mesurer la maturité : indices et diagnostics
+    \item Synthèse et pistes de lecture
+  \end{enumerate}
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Origines}
+
+\begin{frame}{Une généalogie en quatre courants}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{\color{bleu}Accès à l'information}
+      \begin{itemize}
+        \item Lois sur la liberté de l'information (Suède 1766, États-Unis 1966)
+        \item Le citoyen a le droit de demander
+      \end{itemize}
+      \vspace{0.5em}
+      \textbf{\color{bleu}Réutilisation des informations publiques}
+      \begin{itemize}
+        \item Directive européenne PSI de 2003
+        \item Logique économique : les données sont une matière première
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{\color{bleu}Mouvement du logiciel libre}
+      \begin{itemize}
+        \item Licences ouvertes, communautés, transparence du code
+        \item Open Knowledge Foundation (2004)
+      \end{itemize}
+      \vspace{0.5em}
+      \textbf{\color{bleu}Web de données}
+      \begin{itemize}
+        \item Berners-Lee : données liées (2006), échelle des 5 étoiles (2010)
+        \item Les données doivent être lisibles par les machines
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vfill
+  \refc{Kitchin (2014) ; Davies et al. (2019)}
+\end{frame}
+
+\begin{frame}{Les textes fondateurs}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    \textbf{Date} & \textbf{Texte et apport} \\
+    \midrule
+    2007 & \textbf{Principes de Sebastopol} : 8 critères des données publiques ouvertes (complètes, primaires, à jour, accessibles, lisibles par machine, non discriminatoires, non propriétaires, libres de droits) \\
+    2009 & \textbf{Mémorandum Obama} et Open Government Directive ; lancement de data.gov \\
+    2010 & Lancement de data.gov.uk ; échelle des 5 étoiles \\
+    2011 & \textbf{Open Government Partnership} ; Kenya, premier portail national africain \\
+    2013 & \textbf{Charte du G8} sur les données ouvertes \\
+    2015 & \textbf{Charte internationale des données ouvertes} : ouvertes par défaut \\
+    2016 & Principes \textbf{FAIR} pour les données de recherche \\
+    2019 & Directive européenne 2019/1024 : données à forte valeur \\
+    2022 & Cadre de politique des données de l'Union africaine \\
+    \bottomrule
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{Définir les données ouvertes}
+  \begin{block}{Définition de l'Open Knowledge Foundation}
+    Des données que chacun peut librement utiliser, réutiliser et redistribuer, sous réserve tout au plus de citer la source et de partager à l'identique.
+  \end{block}
+  \vspace{0.5em}
+  Trois dimensions reviennent dans toute la littérature :
+  \begin{itemize}
+    \item \textbf{juridique} : une licence ouverte ;
+    \item \textbf{technique} : un format lisible par machine, non propriétaire, téléchargeable en entier ;
+    \item \textbf{économique} : gratuité ou coût marginal.
+  \end{itemize}
+  \vspace{0.5em}
+  \textbf{Distinction importante} : \emph{open government data} (données publiques) et \emph{open data} au sens large (recherche, entreprises, société civile).
+  \vfill
+  \refc{Open Definition 2.1 ; Ubaldi (2013), OCDE}
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Cadres théoriques}
+
+\begin{frame}{Gouvernement ouvert : trois promesses}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \textbf{\color{bleu}Transparence}\par\smallskip
+      \small Rendre l'action publique visible et contrôlable
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \textbf{\color{bleu}Participation}\par\smallskip
+      \small Associer les citoyens aux décisions
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \textbf{\color{bleu}Collaboration}\par\smallskip
+      \small Co-produire des services avec la société
+    \end{column}
+  \end{columns}
+  \vspace{1em}
+  \begin{itemize}
+    \item \textbf{Meijer, Curtin et Hillebrandt (2012)} : le gouvernement ouvert combine la \emph{vision} (voir dans l'État) et la \emph{voix} (parler à l'État).
+    \item \textbf{Yu et Robinson (2012)} : \og la nouvelle ambiguïté \fg{}. Ouvrir des données techniques (horaires de bus) n'est pas rendre l'État redevable. Il faut distinguer la technologie de la finalité politique.
+  \end{itemize}
+  \vfill
+  \refc{Meijer et al. (2012), IRAS 78(1) ; Yu \& Robinson (2012), UCLA Law Review Discourse 59}
+\end{frame}
+
+\begin{frame}{Bénéfices, obstacles et mythes}
+  \textbf{Janssen, Charalabidis et Zuiderwijk (2012)}, article le plus cité du champ.
+  \vspace{0.4em}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{\color{bleu}Bénéfices identifiés}
+      \begin{itemize}
+        \item politiques et sociaux : transparence, confiance
+        \item économiques : innovation, nouveaux services
+        \item opérationnels : meilleure décision publique
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{\color{bleu}Cinq mythes}
+      \begin{enumerate}
+        \small
+        \item publier produit automatiquement des bénéfices
+        \item toute information doit être publiée sans restriction
+        \item il suffit de publier
+        \item chacun peut utiliser les données
+        \item l'open data aboutit à un gouvernement ouvert
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+  \vspace{0.5em}
+  \alert{Leçon pour un portail} : la publication est une condition nécessaire, jamais suffisante.
+  \vfill
+  \refc{Janssen et al. (2012), Information Systems Management 29(4)}
+\end{frame}
+
+\begin{frame}{La valeur économique}
+  \begin{itemize}
+    \item \textbf{McKinsey Global Institute (2013)} : 3 000 à 5 000 milliards de dollars de valeur potentielle par an dans 7 secteurs. Chiffre très repris, souvent critiqué pour sa méthode.
+    \item \textbf{Rapports de la Commission européenne} (2015, 2020) : estimation de la taille du marché européen des données ouvertes.
+    \item \textbf{Ubaldi (2013, OCDE)} : la valeur dépend de la capacité de l'écosystème à réutiliser, pas de la quantité publiée.
+  \end{itemize}
+  \vspace{0.6em}
+  \textbf{Point de consensus} : la valeur est \emph{potentielle} et \emph{indirecte}. Elle se mesure mal, et les estimations macroéconomiques restent fragiles.
+  \vfill
+  \refc{Manyika et al. (2013) ; Ubaldi (2013), OECD Working Papers on Public Governance 22}
+\end{frame}
+
+\begin{frame}{Le tournant des écosystèmes}
+  \begin{center}
+  \begin{tikzpicture}[node distance=0.6cm and 0.9cm,
+      b/.style={draw=bleu,line width=0.8pt,minimum width=2.4cm,minimum height=0.9cm,align=center,font=\small},
+      a/.style={-{Stealth},line width=0.8pt,color=encre}]
+    \node[b] (prod) {Producteurs\\(administrations)};
+    \node[b,right=of prod] (port) {Portail\\(infrastructure)};
+    \node[b,right=of port] (inter) {Intermédiaires\\(médias, civic tech)};
+    \node[b,right=of inter] (util) {Utilisateurs\\finaux};
+    \draw[a] (prod) -- (port);
+    \draw[a] (port) -- (inter);
+    \draw[a] (inter) -- (util);
+    \draw[a,dashed,color=gris] (util.south) to[bend left=20] node[below,font=\scriptsize,color=gris]{retours, demandes de données} (prod.south);
+  \end{tikzpicture}
+  \end{center}
+  \vspace{0.3em}
+  \begin{itemize}
+    \small
+    \item \textbf{Heimstädt, Saunderson et Heath (2014)} : l'écosystème britannique, du \og bambin à l'adolescent \fg{}.
+    \item \textbf{Zuiderwijk, Janssen et Davis (2014)} : éléments essentiels d'un écosystème (publication, recherche, usage, retour).
+    \item \textbf{Dawes, Vidiasova et Parkhimovich (2016)} : planifier un programme open data comme un écosystème.
+  \end{itemize}
+  \refc{JeDEM 6(2) ; Information Polity 19 ; Government Information Quarterly 33(1)}
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Le portail}
+
+\begin{frame}{Le portail comme objet de recherche}
+  \begin{itemize}
+    \item Première génération (2009 à 2013) : le portail est un \textbf{catalogue} de fichiers.
+    \item Deuxième génération : API, visualisations, demandes de données, réutilisations.
+    \item Troisième génération : le portail devient une \textbf{plateforme d'interaction} entre producteurs et réutilisateurs.
+  \end{itemize}
+  \vspace{0.6em}
+  Travaux de référence :
+  \begin{itemize}
+    \small
+    \item \textbf{Attard et al. (2015)} : revue systématique des initiatives open data et de leur cycle de vie.
+    \item \textbf{Lněnička et Nikiforova (2021)} : \og transparency by design \fg{}, les fonctions qu'un portail doit offrir.
+    \item \textbf{Charalabidis et al. (2018)} : \emph{The World of Open Data}, synthèse sur les architectures et les usages.
+  \end{itemize}
+  \vfill
+  \refc{Government Information Quarterly 32(4) ; Telematics and Informatics 61 ; Springer}
+\end{frame}
+
+\begin{frame}{Les fonctions attendues d'un portail}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    \textbf{Fonction} & \textbf{Éléments relevés dans la littérature} \\
+    \midrule
+    Découverte & recherche, filtres, catégories, métadonnées riches, moissonnage DCAT \\
+    Accès & téléchargement, API, formats ouverts, licences claires \\
+    Compréhension & aperçu, visualisation, dictionnaire des données, documentation \\
+    Qualité & fraîcheur affichée, schémas, validation, contact du producteur \\
+    Interaction & demandes de données, commentaires, signalement d'erreurs \\
+    Valorisation & vitrine des réutilisations, statistiques d'usage \\
+    \bottomrule
+  \end{tabularx}
+  \vfill
+  \refc{Máchová \& Lněnička (2017) ; Lněnička \& Nikiforova (2021)}
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Qualité et usage}
+
+\begin{frame}{Évaluer la qualité des portails}
+  \begin{itemize}
+    \item \textbf{Umbrich, Neumaier et Polleres (2015)} : observatoire automatique de plus de 80 portails CKAN. Constats : métadonnées incomplètes, liens morts, licences absentes.
+    \item \textbf{Máchová et Lněnička (2017)} : cadre d'évaluation des portails nationaux sur trois axes, données, fonctions du portail et engagement des utilisateurs.
+    \item \textbf{Wilkinson et al. (2016)} : principes FAIR (trouvable, accessible, interopérable, réutilisable), repris au-delà de la recherche.
+  \end{itemize}
+  \vspace{0.6em}
+  \alert{Constat récurrent} : de nombreux portails sont des \og cimetières de données \fg{} : beaucoup de jeux publiés, peu mis à jour, peu utilisés.
+  \vfill
+  \refc{OBD 2015 ; Journal of Theoretical and Applied Electronic Commerce Research 12(1) ; Scientific Data 3}
+\end{frame}
+
+\begin{frame}{Qui utilise les données, et pour quoi ?}
+  \begin{itemize}
+    \item \textbf{Safarov, Meijer et Grimmelikhuijsen (2017)} : revue systématique de l'utilisation. Types d'usages, conditions, effets, utilisateurs.
+    \item \textbf{Ruijer, Grimmelikhuijsen et Meijer (2017)} : l'usage dépend du modèle démocratique visé (contrôle, délibération, participation).
+    \item \textbf{Gurstein (2011)} : \og l'\emph{effective use} \fg{}. Sans compétences, accès et outils, l'open data donne du pouvoir à ceux qui en ont déjà.
+  \end{itemize}
+  \vspace{0.6em}
+  \textbf{Implication pour le portail} : concevoir pour des profils précis (journalistes, chercheurs, développeurs, administrations), pas pour un \og public \fg{} abstrait.
+  \vfill
+  \refc{Information Polity 22(1) ; Government Information Quarterly 34(1) ; First Monday 16(2)}
+\end{frame}
+
+\begin{frame}{Politiques nationales comparées}
+  \begin{itemize}
+    \item \textbf{Huijboom et Van den Broek (2011)} : première comparaison internationale des stratégies (États-Unis, Royaume-Uni, Australie, Danemark, Espagne).
+    \item \textbf{Zuiderwijk et Janssen (2014)} : grille de comparaison des politiques open data (contexte, politique, conditions, impacts).
+    \item \textbf{Ubaldi (2013, OCDE)} : cadre d'analyse pour les gouvernements, repris dans les enquêtes OURdata de l'OCDE.
+  \end{itemize}
+  \vspace{0.6em}
+  \textbf{Facteurs de succès les plus cités} : portage politique, cadre juridique, gouvernance des données, financement durable, implication de la demande.
+  \vfill
+  \refc{European Journal of ePractice 12 ; Government Information Quarterly 31(1)}
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Critiques}
+
+\begin{frame}{Les critiques à connaître}
+  \begin{itemize}
+    \item \textbf{Gurstein (2011)} : risque d'accroître les inégalités, au profit des acteurs déjà équipés.
+    \item \textbf{Johnson (2014)} : de l'open data à la \og justice informationnelle \fg{}. Les données encodent des choix et des biais de ceux qui les produisent.
+    \item \textbf{Yu et Robinson (2012)} : confusion entre ouverture technique et redevabilité politique.
+    \item \textbf{Kitchin (2014)} : marchandisation possible des données publiques par de grands acteurs privés.
+    \item \textbf{Vie privée} : risques de réidentification lors du croisement de jeux de données anonymisés.
+  \end{itemize}
+  \vspace{0.5em}
+  \alert{Question à se poser pour chaque portail} : à qui profite l'ouverture, et qui en est exclu ?
+  \vfill
+  \refc{Ethics and Information Technology 16(4) ; Kitchin, \emph{The Data Revolution}, Sage}
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Afrique}
+
+\begin{frame}{L'open data dans les pays en développement}
+  \begin{itemize}
+    \item \textbf{Davies et al. (2019)}, \emph{The State of Open Data} : bilan mondial en 30 chapitres, publié par African Minds et le CRDI. Lecture prioritaire.
+    \item \textbf{Open Data in Developing Economies} (réseau ODDC, 2013 à 2015) : études de cas montrant que le contexte institutionnel compte plus que la technologie.
+    \item \textbf{Constats} : portails lancés avec l'appui de bailleurs puis abandonnés ; faible demande locale ; problèmes de connectivité ; manque de données numérisées en amont.
+  \end{itemize}
+  \vfill
+  \refc{Davies, Walker, Rubinstein \& Perini (dir.), 2019, African Minds \& IDRC}
+\end{frame}
+
+\begin{frame}{Travaux sur l'Afrique}
+  \begin{itemize}
+    \item \textbf{Mutuku et Colaco (2012)} : le portail du Kenya, premier d'Afrique subsaharienne (2011). Forte publication, faible consommation locale.
+    \item \textbf{van Schalkwyk, Willmers et McNaughton (2016)} : les données \og visqueuses \fg{}. En Afrique du Sud, les \textbf{intermédiaires} (universités, médias, ONG) sont indispensables pour que les données circulent.
+    \item \textbf{Banque mondiale, rapports ODRA} : diagnostics nationaux (plusieurs pays africains), qui pointent surtout la gouvernance et le financement.
+    \item \textbf{Banque africaine de développement, Open Data for Africa} : réseau de portails statistiques nationaux, centré sur les indicateurs et les instituts de statistique.
+    \item \textbf{Union africaine (2022)} : cadre continental de politique des données, articulé avec la Convention de Malabo.
+  \end{itemize}
+  \vfill
+  \refc{ICEGOV 2012 ; Information Technology for Development 22(sup1)}
+\end{frame}
+
+\begin{frame}{Spécificités africaines dégagées par la littérature}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    \textbf{Enjeu} & \textbf{Ce que montrent les travaux} \\
+    \midrule
+    Offre & les données existent souvent sur papier ou dans des fichiers dispersés \\
+    Demande & faible, mais forte chez les journalistes, ONG et chercheurs quand on les implique \\
+    Intermédiaires & rôle central de Code for Africa, des universités et des médias \\
+    Statistique & l'institut national de la statistique est l'acteur clé, d'où des portails orientés indicateurs \\
+    Financement & dépendance aux bailleurs, risque d'arrêt après le projet \\
+    Infrastructure & connectivité, coût des données mobiles, hébergement \\
+    \bottomrule
+  \end{tabularx}
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Mesure}
+
+\begin{frame}{Mesurer la maturité}
+  \small
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    \textbf{Outil} & \textbf{Ce qu'il mesure} \\
+    \midrule
+    ODRA (Banque mondiale) & préparation d'un pays, en 8 dimensions, avant le lancement \\
+    Open Data Barometer (Web Foundation, 2013 à 2017) & préparation, mise en œuvre et impact \\
+    Global Data Barometer (2022) & gouvernance, capacités, disponibilité et usage des données \\
+    ODIN (Open Data Watch) & ouverture et couverture des statistiques officielles \\
+    OURdata (OCDE) & disponibilité, accessibilité, soutien à la réutilisation \\
+    Open Data Maturity (UE) & politique, portail, qualité et impact en Europe \\
+    \bottomrule
+  \end{tabularx}
+  \vspace{0.6em}
+  Ces indices sont aussi des \textbf{instruments de politique} : ils orientent ce que les pays choisissent de publier.
+\end{frame}
+
+% ------------------------------------------------------------
+\section{Synthèse}
+
+\begin{frame}{Ce qu'il faut retenir}
+  \begin{enumerate}
+    \item Un portail est une \textbf{infrastructure au service d'un écosystème}, pas une fin en soi.
+    \item La valeur naît de la \textbf{réutilisation}, qui dépend des compétences et des intermédiaires.
+    \item La \textbf{qualité et la fraîcheur} comptent plus que le nombre de jeux publiés.
+    \item La réussite dépend d'abord de la \textbf{gouvernance}, du \textbf{cadre juridique} et du \textbf{financement durable}.
+    \item En Afrique, l'institut de statistique et les intermédiaires sont au centre du dispositif.
+    \item Il faut garder un regard critique : \textbf{qui gagne}, qui est exclu, quels risques pour la vie privée.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ordre de lecture conseillé}
+  \begin{enumerate}
+    \small
+    \item Janssen, Charalabidis et Zuiderwijk (2012) : les bénéfices et les mythes
+    \item Ubaldi (2013, OCDE) : le cadre d'analyse pour les gouvernements
+    \item Gurstein (2011) puis Johnson (2014) : les critiques
+    \item Attard et al. (2015) : la revue systématique
+    \item Zuiderwijk, Janssen et Davis (2014) puis Dawes et al. (2016) : les écosystèmes
+    \item Máchová et Lněnička (2017) : évaluer un portail
+    \item Davies et al. (2019) : \emph{The State of Open Data}, en entier ou par chapitres
+    \item van Schalkwyk et al. (2016) : les intermédiaires en Afrique
+    \item Banque mondiale, Open Data Toolkit et un rapport ODRA africain
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Références}
+  \scriptsize
+  \begin{itemize}
+    \item Attard, J., Orlandi, F., Scerri, S., Auer, S. (2015). A systematic review of open government data initiatives. \emph{Government Information Quarterly}, 32(4).
+    \item Charalabidis, Y., Zuiderwijk, A., Alexopoulos, C., Janssen, M., Lampoltshammer, T., Ferro, E. (2018). \emph{The World of Open Data}. Springer.
+    \item Davies, T., Walker, S., Rubinstein, M., Perini, F. (dir.) (2019). \emph{The State of Open Data: Histories and Horizons}. African Minds et IDRC.
+    \item Dawes, S. S., Vidiasova, L., Parkhimovich, O. (2016). Planning and designing open government data programs: An ecosystem approach. \emph{Government Information Quarterly}, 33(1).
+    \item Gurstein, M. (2011). Open data: Empowering the empowered or effective data use for everyone? \emph{First Monday}, 16(2).
+    \item Heimstädt, M., Saunderson, F., Heath, T. (2014). From toddler to teen: Growth of an open data ecosystem. \emph{JeDEM}, 6(2).
+    \item Huijboom, N., Van den Broek, T. (2011). Open data: an international comparison of strategies. \emph{European Journal of ePractice}, 12.
+    \item Janssen, M., Charalabidis, Y., Zuiderwijk, A. (2012). Benefits, adoption barriers and myths of open data and open government. \emph{Information Systems Management}, 29(4).
+    \item Johnson, J. A. (2014). From open data to information justice. \emph{Ethics and Information Technology}, 16(4).
+    \item Kitchin, R. (2014). \emph{The Data Revolution}. Sage.
+    \item Lněnička, M., Nikiforova, A. (2021). Transparency-by-design: What is the role of open data portals? \emph{Telematics and Informatics}, 61.
+    \item Máchová, R., Lněnička, M. (2017). Evaluating the quality of open data portals on the national level. \emph{Journal of Theoretical and Applied Electronic Commerce Research}, 12(1).
+    \item Manyika, J. et al. (2013). \emph{Open data: Unlocking innovation and performance with liquid information}. McKinsey Global Institute.
+    \item Meijer, A., Curtin, D., Hillebrandt, M. (2012). Open government: connecting vision and voice. \emph{International Review of Administrative Sciences}, 78(1).
+    \item Mutuku, L., Colaco, J. (2012). Increasing Kenyan open data consumption. \emph{ICEGOV 2012}.
+    \item Ruijer, E., Grimmelikhuijsen, S., Meijer, A. (2017). Open data for democracy. \emph{Government Information Quarterly}, 34(1).
+    \item Safarov, I., Meijer, A., Grimmelikhuijsen, S. (2017). Utilization of open government data: A systematic literature review. \emph{Information Polity}, 22(1).
+    \item Ubaldi, B. (2013). Open government data: Towards empirical analysis of open government data initiatives. \emph{OECD Working Papers on Public Governance}, 22.
+    \item Umbrich, J., Neumaier, S., Polleres, A. (2015). Quality assessment and evolution of open data portals. \emph{OBD 2015}.
+    \item van Schalkwyk, F., Willmers, M., McNaughton, M. (2016). Viscous open data: The roles of intermediaries in an open data ecosystem. \emph{Information Technology for Development}, 22(sup1).
+    \item Wilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. \emph{Scientific Data}, 3.
+    \item Yu, H., Robinson, D. G. (2012). The new ambiguity of open government. \emph{UCLA Law Review Discourse}, 59.
+    \item Zuiderwijk, A., Janssen, M. (2014). Open data policies, their implementation and impact. \emph{Government Information Quarterly}, 31(1).
+    \item Zuiderwijk, A., Janssen, M., Davis, C. (2014). Innovation with open data: Essential elements of open data ecosystems. \emph{Information Polity}, 19.
+  \end{itemize}
+\end{frame}
+
+\end{document}

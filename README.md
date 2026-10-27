@@ -13,6 +13,7 @@ Tutoriel complet, en français, pour concevoir et mettre en place un portail de 
 | [`docs/grille-odra.md`](docs/grille-odra.md) | Grille d'évaluation ODRA prête à remplir |
 | [`docs/open-data-for-africa.md`](docs/open-data-for-africa.md) | Guide pour construire des portails nationaux de type Open Data for Africa |
 | [`docs/ressources.md`](docs/ressources.md) | Bibliothèque de ressources : méthodes, écosystème africain, logiciels, standards, données, formations, financements |
+| [`docs/beamer/`](docs/beamer/) | Présentation Beamer (source LaTeX et PDF) : revue de la littérature sur les portails open data |
 | [`ckan/`](ckan/) | Instructions et configuration pour lancer CKAN avec Docker |
 | [`scripts/publier.py`](scripts/publier.py) | Pipeline qui valide un CSV puis le publie via l'API CKAN |
 | [`exemples/`](exemples/) | Jeu de données d'exemple pour les exercices |
