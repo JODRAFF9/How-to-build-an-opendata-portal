@@ -1,0 +1,12 @@
+{
+  "fields": [
+    {"name": "identifiant", "type": "string", "description": "Code unique de l'école", "constraints": {"required": true, "unique": true}},
+    {"name": "nom", "type": "string", "description": "Nom officiel", "constraints": {"required": true}},
+    {"name": "ville", "type": "string", "description": "Commune"},
+    {"name": "region", "type": "string", "description": "Région administrative"},
+    {"name": "nombre_eleves", "type": "integer", "description": "Effectif à la rentrée", "constraints": {"minimum": 0}},
+    {"name": "latitude", "type": "number", "description": "Latitude WGS84", "constraints": {"minimum": -90, "maximum": 90}},
+    {"name": "longitude", "type": "number", "description": "Longitude WGS84", "constraints": {"minimum": -180, "maximum": 180}}
+  ],
+  "primaryKey": "identifiant"
+}
